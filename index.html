@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to Vue</title>
+  <link rel="stylesheet" href="css/bootstrap-grid.css" id="theme">  
+  <link rel="stylesheet" href="css/css.css" id="theme">  
+  <link rel="stylesheet" href="reveal/css/reveal.css">
+  <link rel="stylesheet" href="reveal/css/theme/blood.css" id="theme">  
+</head>
+<body>
+  <div class="reveal">
+      <div id="app" class="slides">
+          <section>
+            <h1>vue.js</h1>
+          </section>
+          <section>
+            <h2>quem somos</h2>
+          </section>
+          <section>
+            <h3>Sergio Tomas</h3>
+            <div class="d-flex justify-content-center">
+              <div class="col-3">
+                <img class="images" src="images/sergio.jpeg" alt="">
+              </div>
+              <ul class="col-6">
+
+              </ul>
+            </div>
+          </section>          
+          <section>
+          <h3>Adriano Tosta</h3>
+          <div class="d-flex justify-content-center">
+            <div class="col-3">
+              <img class="images" src="images/adriano.jpeg" alt="">
+            </div>
+            <ul class="col-6">
+              <li>designer/UI/Front-end</li>
+            </ul>
+          </div>
+          </section>
+          <section>
+            <h3>Evan You</h3>
+            <div class="d-flex justify-content-center">
+              <div class="col-3">
+                <img class="images" src="images/evanyou.jpeg" alt="">
+              </div>
+              <ul class="col-6">
+                <li>nasceu na China, formado em design</li>
+                <li>trabalhou no Google Creative Lab</li>
+                <li>criou o vuejs</li>
+              </ul>
+            </div>
+          </section>    
+          <section>
+            <h3>O que é vuejs</h3>
+            <p>Vuejs é uma biblioteca para construção de interfaces web, que combinada com outras ferramentas, poderiamos transformá-lo em um framework</p>
+          </section>
+          <section>
+            <h3>Porque criar mais uma biblioteca</h3>
+          </section>  
+          <section>
+            <h1>reatividade</h1>
+            <pre><span class="line"><span class="keyword">new</span> Vue({</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: object</span><br><span class="line">})</span><br></pre>
+          </section>              
+      </div>
+  </div>
+  <script src="reveal/lib/js/head.min.js"></script>
+  <script src="reveal/js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+        controls: true, // mostra as setinhas na parte inferior
+        progress: true, // mostra uma barra de progresso
+        center: true, // centraliza os slides
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        width: "90%",
+        height: "100%",
+        margin: 0,
+        minScale: 1,
+        maxScale: 1        
+    });  
+  </script>
+</body>
+</html>
