@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/vue"></script>
+
+    <style>
+        .outOfStoque {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Minha Lojinha</h2>
+
+    <div id="app">
+        <h2>Lojinha</h2>
+
+        <p>Estoque de Produtos</p>
+
+        <ul>
+            <li 
+                v-for="product in products"
+                v-bind:key="product.id" 
+                v-bind:class="{ outOfStoque: product.quantity === 0 }"
+                v-bind:style="outOfStoqueStyle"
+                >
+                <input type="number" v-model.number="product.quantity" min="0">
+                <span>{{ product.name }}</span>
+                <button @click="adicionarItem(product)" v-bind:disabled="product.quantity === 0">Adicionar</button>
+            </li>
+        </ul>
+
+        <p>
+            Total Quantidade Items:
+            <span v-if="totalQuantity > 0">{{ totalQuantity }}</span>
+            <span v-else>Sem Estoque</span>
+        </p>
+
+
+
+        <p>
+            <strong>Total items: </strong>
+            <span>{{ cart.length }}</span>
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello World"
+            },
+            data() {
+                return {
+                    products: [],
+                    cart: [],
+                    outOfStoqueStyle: {
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            computed: {
+                totalQuantity() {
+                    return this.products.reduce((sum, product) => {
+                        return sum + parseFloat(product.quantity);
+                    }, 0);
+                }
+            },
+            created() {
+                fetch("https://api.myjson.com/bins/74l63")
+                    .then((response) => response.json())
+                    .then(json => {
+                        this.products = json.products;
+                    })
+            },
+            methods: {
+                adicionarItem(productItem) {
+                    if (productItem.quantity > 0) {
+                        this.cart.push(productItem);
+                        productItem.quantity--;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
