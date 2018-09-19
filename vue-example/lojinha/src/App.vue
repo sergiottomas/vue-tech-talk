@@ -1,106 +1,140 @@
 <template>
-  <div id="app">
-    <h2>Lojinha</h2>
+  <div id="app" class="container">
+    <h1>Lista de Tarefas</h1>
 
-    <p>Estoque de Produtos</p>
+    <div class="right-align">
+      <input placeholder="Escreva uma Tarefa" id="txt_tarefa" type="text" class="left">
+      <button class="waves-effect waves-light btn">
+        <i class="material-icons left">add</i>
+          Nova Tarefa
+      </button>
+    </div>
 
-    <ul>
-      <transition-group name="fade">
-        <li v-for="(product, key) in products" v-bind:key="product.id">
-          <input type="number" v-model.number="product.quantity" min="0">
-          <span>{{ product.name }}</span>
-          <button @click="remove(key)">Remover</button>
-          <button @click="adicionarItem(product)" v-bind:disabled="product.quantity === 0">Adicionar</button>
-        </li>
-      </transition-group>
+    <ul class="collection">
+      <li class="collection-item">
+        <div>
+           <label>
+            <input type="checkbox"  />
+            <span>Estudar Vue</span>
+          </label>
+          
+          <a href="#!" class="secondary-content">
+            <i class="material-icons">delete</i>
+          </a>
+        </div>
+      </li>
+
+      <li class="collection-item">
+        <div>
+           <label>
+            <input type="checkbox"  />
+            <span>Analisar meus códigos</span>
+          </label>
+          
+          <a href="#!" class="secondary-content">
+            <i class="material-icons">delete</i>
+          </a>
+        </div>
+      </li>
+
+      <li class="collection-item">
+        <div>
+           <label>
+            <input type="checkbox"  />
+            <span>Reunião com Chefia</span>
+          </label>
+          
+          <a href="#!" class="secondary-content">
+            <i class="material-icons">delete</i>
+          </a>
+        </div>
+      </li>
+
+      <li class="collection-item">
+        <div>
+           <label>
+            <input type="checkbox"  />
+            <span>Estudar Ingles</span>
+          </label>
+          
+          <a href="#!" class="secondary-content">
+            <i class="material-icons">delete</i>
+          </a>
+        </div>
+      </li>
     </ul>
 
-    <p>
-      Total Quantidade Items: 
-      <span v-if="totalQuantity > 0">{{ totalQuantity }}</span>
-      <span v-else>Sem Estoque</span>
-    </p>
+    <p>Concluidas: 0</p>
 
-    
+    <p class="alert">Você não possúi nenhuma Tarefa</p>
 
-    <p>
-      <strong>Total items: </strong>
-      <span>{{ cart.length }}</span>
-    </p>
+    <h1>Editar Tarefa</h1>
+    <div class="right-align">
+      <input placeholder="Escreva uma Tarefa" id="txt_tarefa" type="text" class="left" value="Estudar Vue">
+      <button class="waves-effect waves-light btn">
+        <i class="material-icons left">save</i>
+          Salvar
+      </button>
+    </div>
+
+    <div class="col s12 m7">
+    <h2 class="header">Estudar Ingles</h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <textarea>
+            Preciso Estudar Ingles, usando os livros que estão na biblioteca da Av XYZ
+          </textarea>
+        </div>
+        <div class="card-action right-align">
+          <a href="#">Salvar</a>
+          <a href="#">Remover</a>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
 <script>
 //https://api.myjson.com/bins/nsvk0
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      products: [],
-      cart: []
-    }
-  },
-  computed: {
-    totalQuantity() {
-      return this.products.reduce((sum, product) => {
-        return sum + parseFloat(product.quantity);
-      }, 0);
-    }
-  },
-  created() {
-    fetch("https://api.myjson.com/bins/74l63")
-    .then((response) => response.json())
-    .then(json => {
-      this.products = json.products;
-    })
+      tasks: []
+    };
   },
   methods: {
-    adicionarItem(productItem) {
-      if (productItem.quantity > 0) {
-        this.cart.push(productItem);
-        productItem.quantity--;
-      }
-    },
-    remove(itemIndex) {
-      console.info(itemIndex)
-      this.products.splice(itemIndex, 1);
+    addNewTask() {
+      this.tasks.push();
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: block;
-  margin: 0 10px;
-  text-align: left;
-}
-
-a {
-  color: #42b983;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+#add-task-button {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+}
+
+label {
+  color: #333;
+}
+
+textarea {
+  border: none;
+  resize: none;
 }
 </style>
