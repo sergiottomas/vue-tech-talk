@@ -27,7 +27,8 @@ export default {
         saveTask(task) {
             this.$emit("finishEditTask", {
                 newTask: {
-                    name: this.txtTask
+                    name: this.txtTask,
+                    isChecked: this.selectedTask.task.isChecked
                 },
                 index: this.selectedTask.index
             });

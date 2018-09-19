@@ -8,7 +8,7 @@
                     <li class="collection-item" v-for="(task, index) in tasks">
                         <div>
                             <label>
-                                <input type="checkbox"  v-on:change="finishTask($event, task)"/>
+                                <input type="checkbox"  v-on:change="finishTask($event, task)" :checked="task.isChecked ? 'checked' : ''"/>
                                 <span>{{ task.name }}</span>
                             </label>
 
