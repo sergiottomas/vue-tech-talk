@@ -76,22 +76,6 @@
           Salvar
       </button>
     </div>
-
-    <div class="col s12 m7">
-    <h2 class="header">Estudar Ingles</h2>
-    <div class="card horizontal">
-      <div class="card-stacked">
-        <div class="card-content">
-          <textarea>
-            Preciso Estudar Ingles, usando os livros que estão na biblioteca da Av XYZ
-          </textarea>
-        </div>
-        <div class="card-action right-align">
-          <a href="#">Salvar</a>
-          <a href="#">Remover</a>
-        </div>
-      </div>
-    </div>
   </div>
   </div>
 </template>
